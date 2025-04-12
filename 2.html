@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Variáveis e Operadores</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100svh;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+        #tipos, #resultados{
+            text-align: center;
+            border: 1px solid rgb(197, 195, 195);
+            border-radius: 10px;
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button>Click Aqui</button>
+
+    <div class="container">
+        <div id="tipos">
+            <h2>Tipos de cada variável:</h2>
+            <p id="pstring"></p>
+            <p id="pnumber"></p>
+            <p id="pboolean"></p>
+            <p id="pundefined"></p>
+            <p id="pnull"></p>
+            <p id="pobject"></p>
+            <p id="parray"></p>
+        </div>
+        <div id="resultados">
+            <h2>Resultado entre Operação com Tipos diferentes:</h2>
+            <p id="op1"></p>
+            <p id="op2"></p>
+            <p id="op3"></p>
+            <p id="op4"></p>
+        </div>
+
+    </div>
+
+    <script>
+        let botao = document.querySelector("button")
+
+        let texto = "Olá"
+        let numero = 42
+        let boleano = true
+        let indefinido
+        let nulo = null
+        let objeto = {nome: "Fulano", idade: 30}
+        let array = [5, 6, 7, 8]
+
+        botao.addEventListener("click", ()=>{
+            document.getElementById("pstring").innerHTML = `Texto (string): ${typeof(texto)}`
+            document.getElementById("pnumber").innerHTML = `Numero (number): ${typeof(numero)}`
+            document.getElementById("pboolean").innerHTML = `Booleano (boolean): ${typeof(boleano)}`
+            document.getElementById("pundefined").innerHTML = `Indefinido (undefined): ${typeof(indefinido)}`
+            document.getElementById("pnull").innerHTML = `Nulo (null): ${typeof(nulo)}`
+            document.getElementById("pobject").innerHTML = `Objeto (object): ${typeof(objeto)}`
+            document.getElementById("parray").innerHTML = `Lista (array): ${array}`
+
+            let res1 = texto + numero
+            let res2 = boleano * numero
+            let res3 = texto * numero
+            let res4 = nulo + numero
+
+            console.log("Texto + numero:", res1)
+            console.log("Booleano * numero", res2)
+            console.log("Texto * numero:", res3)
+            console.log("Bulo + numero", res4)
+
+            document.getElementById("op1").innerText = `texto + numero = ${res1} - O número é convertido para string e ocorre concatenação.`
+            document.getElementById("op2").innerText = `booleano * numero = ${res2} - true é convertido para 1.`
+            document.getElementById("op3").innerText = `texto * numero = ${res3} - Não é possível multiplicar string por número, então o resultado é NaN.`
+            document.getElementById("op4").innerText = `nulo + numero = ${res4} - null é tratado como 0 na adição com número.`
+
+        })
+
+    </script>
+</body>
+</html>
