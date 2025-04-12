@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é JavaScript?</title>
+    
+    <style>
+        body{
+            background-color: rgba(65, 65, 64, 0.329);
+        }
+        h1, h2{
+            margin: auto;
+            width: auto;
+            padding: 1%;
+            text-align: center;
+        }
+        .fundo{
+            background-color: rgb(245, 247, 248);
+            margin: auto;
+            max-width: 950px;
+            border-radius: 10px;
+            padding: 50px;
+            text-align: justify;
+            box-shadow: 0 0 10px black;
+        }
+        p{
+            text-indent: 47px;
+        }
+        #hora{
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            text-indent: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="fundo">
+        <h1>O que é JavaScript?</h1>
+        <p>Nos anos 1990, a web era composta basicamente por páginas estáticas, feitas em HTML e, no máximo, com um pouco de estilo usando CSS. Qualquer tipo de processamento mais complexo, como validação de formulários ou resposta a ações do usuário, precisava ser feito no servidor, o que deixava a experiência lenta e limitada.
+        </p>
+        <p>Em 1995, a Netscape, uma das empresas responsáveis pelos primeiros navegadores web, queria adicionar funcionalidades mais ricas ao lado do cliente (ou seja, no próprio navegador), sem depender tanto do servidor.</p>
+        <p>Eles contrataram Brendan Eich com o objetivo de criar uma linguagem de script que:</p>
+        <ul>
+            <li>Rodasse no navegador.</li>
+            <li>Permitisse interações com o usuário (como cliques, envio de formulários etc.).</li>
+            <li>Fosse fácil de aprender (com uma sintaxe parecida com Java, que estava em alta).</li>
+            <li>E fosse integrada ao HTML.</li>
+        </ul>
+        <p>Brendan Eich criou o que seria o JavaScript em apenas 10 dias, inicialmente chamado de Mocha, depois LiveScript, e por fim, JavaScript (o nome foi uma jogada de marketing da Netscape, tentando pegar carona no sucesso do Java na época).</p>
+        <p>A criação do JavaScript foi motivada pela necessidade de adicionar interatividade, dinamismo e resposta em tempo real às páginas web, diretamente no navegador, sem depender exclusivamente do servidor.</p>
+
+        <h2>Qual a diferença entre execução no navegado e no servidor?</h2>
+        <p>A execução no navegador (cliente) acontece no dispositivo do usuário, usando HTML, CSS e JavaScript para manipular a interface, validar dados e responder a eventos. Já a execução no servidor (back-end) ocorre em um servidor remoto, processando requisições, acessando bancos de dados e controlando regras de segurança. A principal diferença é que o cliente lida com a apresentação e interatividade, enquanto o servidor cuida do processamento e da lógica central da aplicação.</p>
+
+        <h2>Conceito de Sandbox e Navegador</h2>
+        <p>O conceito de <strong>sandbox</strong> no navegador significa que o JavaScript é executado em um ambiente controlado e isolado, sem acesso direto ao sistema de arquivos ou outras partes sensíveis do computador do usuário. Isso garante mais segurança durante a navegação na web.</p>
+
+        <h2>Objetos Globais no Ambiente de Execução JS</h2>
+        <p>No JavaScript, existem objetos globais úteis como <code>document</code>, que representa a estrutura da página (DOM), <code>console</code>, usado para exibir mensagens e depurar o código no console do navegador, e <code>alert</code>, que exibe uma janela de aviso simples ao usuário. Esses objetos fazem parte do ambiente fornecido pelo navegador para facilitar a interação com a página.</p>
+
+        <h2>Exibindo a Hora</h2>
+        <p id="hora"></p>
+    </div>
+
+    <script>
+        console.log("Registrando uma mensagem no console")
+        alert("Seja bem vindo!")
+
+        const agora = new Date()
+        const horas = agora.getHours().toString().padStart(2, "0")
+        const minutos = agora.getMinutes().toString().padStart(2, "0")
+        const segundos = agora.getSeconds().toString().padStart(2, "0")
+
+        document.getElementById("hora").innerHTML = `${horas}:${minutos}:${segundos}`
+
+
+    </script>
+    
+</body>
+</html>
