@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mudando a Cor de Fundo</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100svh;
+            padding: 0;
+            margin: 0;
+        }
+        button{
+            border-radius: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 10px 10px 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="mudarCor()">Alterar Cor de Fundo</button>
+    
+    <script>
+        
+        function numAleatorio(){
+            let numero = Math.trunc(Math.random()*255)
+            return numero
+        }
+        function mudarCor(){
+            document.body.style.backgroundColor = `rgb(${numAleatorio()}, ${numAleatorio()}, ${numAleatorio()})`
+        }
+
+    </script>
+</body>
+</html>

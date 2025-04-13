@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alteração de Cores</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+        }
+        .box{
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            width: 20%;
+            height: 300px; 
+        }
+        .texto{
+            margin: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box1">
+        <div class="texto"></div>
+    </div>
+    <div class="box" id="box2">
+        <div class="texto"></div>
+    </div>
+    <div class="box" id="box3">
+        <div class="texto"></div>
+    </div>
+    <div class="box" id="box4">
+        <div class="texto"></div>
+    </div>
+    <div class="box" id="box5">
+        <div class="texto"></div>
+    </div>
+
+    <script>
+        var caixas = document.querySelectorAll(".box")
+        var texto = document.querySelectorAll(".texto")
+
+        document.addEventListener("keypress", (key)=>{
+            if(key.keyCode == 32){
+                caixas.forEach((caixa, index) => {
+                    let corPt1 = mudaCor()
+                    let corPt2 = mudaCor()
+                    let corPt3 = mudaCor()
+                    caixa.style.backgroundColor = `#${corPt1}${corPt2}${corPt3}`
+                    texto[index].innerHTML = `#${corPt1}${corPt2}${corPt3}`
+
+                })
+            }
+        })
+
+        function mudaCor(){
+            let numero = Math.trunc(Math.random()*255).toString(16).toUpperCase()
+            return numero
+            
+        }
+    </script>
+    
+</body>
+</html>
