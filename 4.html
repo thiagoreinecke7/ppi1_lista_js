@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Números</title>
+
+    <style>
+        .fundo{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: azure;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0px 10px 0 black;
+            width: 80%;
+            height: 100%;
+            text-align: center;
+            
+            padding: 20px;
+        }
+        #formulario{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        button{
+            cursor: pointer;
+        }
+        #boxLista{
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        
+
+    </style>
+</head>
+<body>
+    <div class="fundo">
+        <div id="formulario">
+            <h1>Sorteio de Números</h1>
+            <label for="min">Número Mínimo:</label>
+            <input type="text" id="min" value="1">
+            <label for="max">Número Máximo</label>
+            <input type="text" id="max" value="100">
+            <br>
+            <button onclick="sortear()">Sortear</button>
+        </div>
+        <p id="resultado"></p>
+        <div id="boxLista">
+            <ol id="listaMemoria"></ol>
+        </div>
+    </div>
+
+
+    <script>
+        var lista = []
+
+        function sortear() {
+            const min = parseInt(document.getElementById("min").value)
+            const max = parseInt(document.getElementById("max").value)
+            let delta = (max + 1) - min
+            let res = Math.trunc((delta * Math.random()) + min)
+
+            if(isNaN(min) || isNaN(max) || min > max){
+                document.getElementById("resultado").innerText = `Informe um intervalo válido!`
+                return
+            }
+            else{
+                document.getElementById("resultado").innerText = `Seu númeo da sorte é ${res}`
+            }
+            
+            let item = lista.find(obj => obj.numero === res);
+            console.log(item)
+            if (item) {
+                item.quantidade++;
+            } else {
+                lista.push({ numero: res, quantidade: 1 });
+            }
+            atualizaLista()     
+        }
+
+        function existeNumero(array, res){
+            return array.some(lista => lista.numero === res)
+        }
+
+        function atualizaLista(){
+            document.getElementById("listaMemoria").innerHTML = ""
+
+            lista.forEach(item => {
+                document.getElementById("listaMemoria").innerHTML += `<li>Numero: ${item.numero} - Sorteado ${item.quantidade}</li>`
+            })
+        }
+    </script>
+    
+</body>
+</html>
