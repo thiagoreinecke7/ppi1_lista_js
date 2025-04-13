@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora com JS</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(162, 226, 252);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100svh;
+        }
+        #calculadora div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid gray;
+        }
+        #calculadora{
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 30px;
+            box-shadow: 5px 5px 10px 0 black;
+            overflow: hidden;
+            cursor: pointer;
+            width: 50%;
+            height: 50%;
+            display: grid;
+
+            grid-template-areas: 
+            "tela tela tela tela"
+            "mais menos multiplicacao divisao"
+            "b7 b8 b9 resultado"
+            "b4 b5 b6 resultado"
+            "b1 b2 b3 resultado"
+            "b0 bponto bac resultado"
+            ;
+
+            grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr;
+        }
+        .operadores{
+            background-color: rgb(199, 197, 197);
+        }
+        .numeros{
+            background-color: azure;
+        }
+        #tela{
+            grid-area: tela;
+            color: white;
+            background-color: black;
+            font-size: 50px;
+        }
+        #mais{
+            grid-area: mais;
+        }
+        #menos{
+            grid-area: menos;
+        }
+        #multiplicacao{
+            grid-area: multiplicacao;
+        }
+        #divisao{
+            grid-area: divisao;
+        }
+        #resultado{
+            grid-area: resultado;
+            background-color: rgb(211, 110, 110);
+        }
+        #b1{
+            grid-area: b1;
+        }
+        #b2{
+            grid-area: b2;
+        }
+        #b3{
+            grid-area: b3;
+        }
+        #b4{
+            grid-area: b4;
+        }
+        #b5{
+            grid-area: b5;
+        }
+        #b6{
+            grid-area: b6;
+        }
+        #b7{
+            grid-area: b7;
+        }
+        #b8{
+            grid-area: b8;
+        }
+        #b9{
+            grid-area: b9;
+        }
+        #bponto{
+            grid-area: bponto;
+        }
+        #bac{
+            grid-area: bac;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculadora">
+        <div id="tela"></div>
+        <div class="operadores" id="mais" onclick="selecionarOp('+')">+</div>
+        <div class="operadores" id="menos" onclick="selecionarOp('-')">-</div>
+        <div class="operadores" id="multiplicacao" onclick="selecionarOp('*')">X</div>
+        <div class="operadores" id="divisao" onclick="selecionarOp('/')">÷</div>
+        <div id="resultado" onclick="calcResultado()">=</div>
+        <div class="numeros" id="b1" onclick="adicionarNum(1)">1</div>
+        <div class="numeros" id="b2" onclick="adicionarNum(2)">2</div>
+        <div class="numeros" id="b3" onclick="adicionarNum(3)">3</div>
+        <div class="numeros" id="b4" onclick="adicionarNum(4)">4</div>
+        <div class="numeros" id="b5" onclick="adicionarNum(5)">5</div>
+        <div class="numeros" id="b6" onclick="adicionarNum(6)">6</div>
+        <div class="numeros" id="b7" onclick="adicionarNum(7)">7</div>
+        <div class="numeros" id="b8" onclick="adicionarNum(8)">8</div>
+        <div class="numeros" id="b9" onclick="adicionarNum(9)">9</div>
+        <div class="numeros" id="b0" onclick="adicionarNum(0)">0</div>
+        <div class="numeros" id="bponto" onclick="colocarPonto()">.</div>
+        <div class="numeros" id="bac" onclick="limparTela()">AC</div>
+    </div>
+    
+    <script>
+        let tela = document.getElementById("tela")
+        let operador = ''
+        let num1 = ''
+        let num2 = ''
+        let pontoAdicionado = false
+
+        function adicionarNum(num){
+            tela.innerText += num;
+        }
+        function selecionarOp(op){
+            if(tela.innerText === ''){return}
+            num1 = tela.innerText
+            operador = op
+            tela.innerText = ''
+            pontoAdicionado = false
+        }
+        function calcResultado(){
+            num2 = tela.innerText
+            let resultado
+
+            num1 = parseFloat(num1)
+            num2 = parseFloat(num2)
+
+            switch (operador){
+                case '+':
+                    resultado = num1 + num2
+                    break
+                case '-':
+                    resultado = num1 - num2
+                    break
+                case '*':
+                    resultado = num1 * num2
+                    break
+                case '/':
+                    if(num2 !== 0){
+                        resultado = num1 / num2
+                    }else{
+                        resultado = "Erro: divisão por 0"
+                    }
+                    break
+                default:
+                    resultado = "Erro"
+            }
+            tela.innerText = resultado
+            num1 = resultado
+            operador = ''
+            num2 = ''
+            pontoAdicionado = false
+        }
+
+        function limparTela(){
+            tela.innerText = ''
+            let operador = ''
+            let num1 = ''
+            let num2 = ''
+            pontoAdicionado = false
+        }
+
+        function colocarPonto(){
+            if(!pontoAdicionado){
+                tela.innerText += '.'
+                pontoAdicionado = true
+            }
+        }
+    </script>
+</body>
+</html>
