@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvando dados no Local Storage</title>
+
+    <style>
+
+    </style>
+</head>
+<body>
+    <label for="nameInput">Nome</label>
+    <input type="text" id="nameInput" placeholder="Digite seu nome">
+    <br>
+    <br>
+    <button id="saveButton" onclick="salvandoNome()">Salvar</button>
+    <button id="imprimeNome" onclick="imprimeNome()">Imprimir Nome</button>
+    <br>
+
+    <p id="greeting"></p>
+
+    <script>
+
+        function salvandoNome(){
+            let nome = document.getElementById("nameInput")
+            localStorage.setItem("nome", nome.value)
+        }
+
+        function imprimeNome(){
+            document.getElementById("greeting").innerText = localStorage.getItem("nome")
+        }
+        
+
+    </script>
+</body>
+</html>
