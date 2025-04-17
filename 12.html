@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhando com Canvas</title>
+
+    
+</head>
+<body>
+    <h1>Desenho com Canvas</h1>
+    <canvas id="meuCanvas" width="400" height="300" style="border:1px solid #000;"></canvas>
+
+    <script>
+        let canvas = document.querySelector("#meuCanvas")
+        let desenho = canvas.getContext('2d')
+
+        desenho.fillStyle = "blue"
+        desenho.fillRect(100, 50, 50, 50)
+
+        desenho.fillStyle = "red"
+        desenho.arc(200, 150, 30, 0, 2*Math.PI)
+        desenho.fill()
+
+        desenho.fillStyle = "black"
+        desenho.font = "30px Arial"
+        desenho.fillText("Canvas", 120, 250)
+        
+    </script>
+</body>
+</html>
